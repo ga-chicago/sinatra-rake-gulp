@@ -9,3 +9,12 @@ namespace :server do
     exec "rerun rackup"
   end
 end
+
+namespace :controller do
+  desc "Create a new controller class"
+  task :create, [:filename, :controllername] do |t, args|
+    File.open("./app/controllers/#{args.filename}.rb", 'w') do |file|
+      file.write("class #{args.controllername} < ApplicationController\n# Your code here\nend")
+    end
+  end
+end
