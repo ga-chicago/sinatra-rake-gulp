@@ -1,3 +1,10 @@
+require 'sinatra/activerecord/rake'
+
+ActiveRecord::Base.establish_connection(
+    :adapter => 'sqlite3',
+    :database => 'db.sqlite3'
+  )
+
 desc "Set up the environment"
 task :environment do
   ENV['RACK_ENV'] ||= 'development'
