@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   get '/:username/:password/?' do |username, password|
-    User.create username: username, password: password
+    if username != '' && password != ''
+      user = User.create username: username, password: password
+    end
 
-    'We made a user'
+    if user
+      'User was created'
+    else
+      'There was an error creating a user'
+    end
   end
 end
